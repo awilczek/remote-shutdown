@@ -3,7 +3,9 @@ var app     = express();
 var exec    = require("child_process").exec;
 
 app.delete("/", function(req, res) {
-    exec("shutdown -P now > log", function (error, stdout, stderr) {
+    var prefix = process.argv[2] ? "echo '" + process.argv[2] + "' | sudo -S " : "";
+
+    exec(prefix + "shutdown -P now > log", function (error, stdout, stderr) {
       if (error) {
         console.log("error");
         console.log(error);
