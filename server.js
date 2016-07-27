@@ -6,11 +6,8 @@ app.delete("/", function(req, res) {
     var prefix = process.argv[2] ? "echo '" + process.argv[2] + "' | sudo -S " : "";
 
     exec(prefix + "shutdown -P now > log", function (error, stdout, stderr) {
-      if (error) {
-        console.log("error");
-        console.log(error);
-        return;
-      }
+      console.log("error");
+      console.log(error);
       console.log("stdout");
       console.log(stdout);
       console.log("stderr");
